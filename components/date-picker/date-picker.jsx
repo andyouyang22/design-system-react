@@ -107,13 +107,13 @@ const propTypes = {
 		weekDays: PropTypes.array
 	}),
 	/**
-	 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
-	 */
-	isOpen: PropTypes.bool,
-	/**
 	 * Makes Monday the first day of the week. _Tested with snapshot testing._
 	 */
 	isIsoWeekday: PropTypes.bool,
+	/**
+	 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
+	 */
+	isOpen: PropTypes.bool,
 	/**
 	 * Please select one of the following:
 	 * * `absolute` - (default) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
