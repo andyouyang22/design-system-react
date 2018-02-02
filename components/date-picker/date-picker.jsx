@@ -107,6 +107,10 @@ const propTypes = {
 		weekDays: PropTypes.array
 	}),
 	/**
+	 * Sets the value of the input and overrides the default input behavior.
+	 */
+	inputValue: PropTypes.string,
+	/**
 	 * True if users can type dates into the input directly. This allows users to type dates, clear the
 	 * input, and specify multiple (comma-separated) dates. Clicking on the input no longer opens the
 	 * calendar component. Clicking on the calendar button opens the calendar to the first valid date
@@ -264,7 +268,7 @@ class Datepicker extends React.Component {
 			isOpen: false,
 			value: props.value,
 			formattedValue: initDate || '',
-			inputValue: initDate || ''
+			inputValue: this.props.inputValue || initDate || ''
 		};
 	}
 
@@ -284,7 +288,7 @@ class Datepicker extends React.Component {
 				this.setState({
 					value: nextProps.value,
 					formattedValue: this.props.formatter(nextProps.value),
-					inputValue: this.props.formatter(nextProps.value)
+					inputValue: nextProps.inputValue || this.props.formatter(nextProps.value)
 				});
 			}
 		}
@@ -304,6 +308,7 @@ class Datepicker extends React.Component {
 		this.setState({
 			value: date,
 			formattedValue: this.props.formatter(date),
+			// Override input value when date is selected from calendar
 			inputValue: this.props.formatter(date)
 		});
 
