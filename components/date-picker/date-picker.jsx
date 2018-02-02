@@ -107,6 +107,13 @@ const propTypes = {
 		weekDays: PropTypes.array
 	}),
 	/**
+	 * True if users can type dates into the input directly. This allows users to type dates, clear the
+	 * input, and specify multiple (comma-separated) dates. Clicking on the input no longer opens the
+	 * calendar component. Clicking on the calendar button opens the calendar to the first valid date
+	 * specified in the input.
+	 */
+	isInputEditable: PropTypes.bool,
+	/**
 	 * Makes Monday the first day of the week. _Tested with snapshot testing._
 	 */
 	isIsoWeekday: PropTypes.bool,
@@ -544,7 +551,9 @@ class Datepicker extends React.Component {
 				this.props.onBlur, // eslint-disable-line react/prop-types
 			onChange: this.handleInputChange,
 			onClick: () => {
-				this.openDialog();
+				if (!this.props.isInputEditable) {
+					this.openDialog();
+				}
 				if (this.props.children && this.props.children.props.onClick) {
 					this.props.children.props.onClick();
 				}
